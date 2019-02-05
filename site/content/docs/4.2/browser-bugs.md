@@ -18,8 +18,8 @@ See also:
 
 
 {{< bug.inline >}}
-{{ $what := .Get "what" | default "bug" }}
-{{ $data := .Get "data" | default "browser-bugs" }}
+{{- $what := .Get "what" | default "bug" -}}
+{{- $data := .Get "data" | default "browser-bugs" -}}
 <table class="bd-browser-bugs table table-bordered table-hover">
   <thead>
     <tr>
@@ -30,14 +30,14 @@ See also:
     </tr>
   </thead>
   <tbody>
-    {{ range (index $.Site.Data $data) }}
+    {{- range (index $.Site.Data $data) }}
     <tr>
-      <td>{{ .browser }}</td>
+      <td>{{ .browser | chomp }}</td>
       <td>{{ .summary | markdownify }}</td>
       <td>{{ partial "bugify" .upstream_bug }}</td>
       <td>{{ partial "bugify" .origin }}</td>
     </tr>
-    {{ end }}
+    {{- end }}
   </tbody>
 </table>
  {{< /bug.inline >}}
