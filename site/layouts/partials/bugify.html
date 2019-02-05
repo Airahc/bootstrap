@@ -10,7 +10,8 @@
 
     {{- $data := split $word "#" -}}
     {{- $bug_cat := replace (index $data 0) "\n" "" -}}
-    {{- $bug_id := replace (index $data 1) "\n" "" | replace "," "" -}}
+    {{- $bug_id := replace (index $data 1) "\n" "" -}}
+    {{- $bug_id = replace $bug_id "," "" -}}
 
     {{- if (eq $bug_cat "Bootstrap") -}}
       <a href="https://github.com/twbs/bootstrap/issues/{{ $bug_id }}">#{{ $bug_id }}</a>
